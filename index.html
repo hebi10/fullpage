@@ -103,7 +103,7 @@
 
       for (let i = 0; i < fullPageLength; i++) {
         pageList[i].addEventListener("click", () => {
-          pageRemoveAct;
+          pageRemoveAct();
           pageList[i].classList.add("active");
           pageAct = i;
           window.scrollTo({
@@ -126,7 +126,7 @@
           let next = elem.nextElementSibling;
           if (delta < 0) {
             if (prev?.dataset.scroll == "fullpage") {
-              pageRemoveAct;
+              pageRemoveAct();
               window.scrollTo({
                 top: prev.offsetTop,
                 left: 0,
@@ -141,7 +141,7 @@
             }
           } else if (delta > 0) {
             if (next?.dataset.scroll == "fullpage") {
-              pageRemoveAct;
+              pageRemoveAct();
               window.scrollTo({
                 top: next.offsetTop,
                 left: 0,
