@@ -95,11 +95,15 @@
         .querySelector(`body > ol li:nth-child(${pageAct})`)
         .classList.add("active");
 
+      const removeAct = () => {
+        for (let j = 0; j < fullPageLength; j++) {
+          pageList[j].classList.remove("active");
+        }
+      };
+
       for (let i = 0; i < fullPageLength; i++) {
         pageList[i].addEventListener("click", () => {
-          for (let j = 0; j < fullPageLength; j++) {
-            pageList[j].classList.remove("active");
-          }
+          removeAct;
           pageList[i].classList.add("active");
           pageAct = i;
           window.scrollTo({
@@ -122,10 +126,7 @@
           let next = elem.nextElementSibling;
           if (delta < 0) {
             if (prev?.dataset.scroll == "fullpage") {
-              for (let j = 0; j < fullPageLength; j++) {
-                pageList[j].classList.remove("active");
-              }
-
+              removeAct;
               window.scrollTo({
                 top: prev.offsetTop,
                 left: 0,
@@ -140,10 +141,7 @@
             }
           } else if (delta > 0) {
             if (next?.dataset.scroll == "fullpage") {
-              for (let j = 0; j < fullPageLength; j++) {
-                pageList[j].classList.remove("active");
-              }
-
+              removeAct;
               window.scrollTo({
                 top: next.offsetTop,
                 left: 0,
